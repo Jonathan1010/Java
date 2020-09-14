@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MantenimientoCreateDlg" widgetVar="MantenimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMantenimientoTitle}">
+            <h:form id="MantenimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mantenimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_idmantenimiento}" for="idmantenimiento" />
+                        <p:inputText id="idmantenimiento" value="#{mantenimientoController.selected.idmantenimiento}" title="#{bundle.CreateMantenimientoTitle_idmantenimiento}" required="true" requiredMessage="#{bundle.CreateMantenimientoRequiredMessage_idmantenimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_idvehiculo}" for="idvehiculo" />
+                        <p:inputText id="idvehiculo" value="#{mantenimientoController.selected.idvehiculo}" title="#{bundle.CreateMantenimientoTitle_idvehiculo}" />
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_idcliente}" for="idcliente" />
+                        <p:inputText id="idcliente" value="#{mantenimientoController.selected.idcliente}" title="#{bundle.CreateMantenimientoTitle_idcliente}" />
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_fecha}" for="fecha" />
+                        <p:inputText id="fecha" value="#{mantenimientoController.selected.fecha}" title="#{bundle.CreateMantenimientoTitle_fecha}" />
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{mantenimientoController.selected.descripcion}" title="#{bundle.CreateMantenimientoTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateMantenimientoLabel_kilometrajevehiculo}" for="kilometrajevehiculo" />
+                        <p:inputText id="kilometrajevehiculo" value="#{mantenimientoController.selected.kilometrajevehiculo}" title="#{bundle.CreateMantenimientoTitle_kilometrajevehiculo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mantenimientoController.create}" value="#{bundle.Save}" update="display,:MantenimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MantenimientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MantenimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
