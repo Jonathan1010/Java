@@ -117,6 +117,10 @@ public class ClienteFacadeREST extends AbstractFacade<Cliente> {
        }
     }
     
+    @POST
+    @Path("Cargar")
+    
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
